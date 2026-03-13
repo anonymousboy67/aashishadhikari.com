@@ -1,0 +1,68 @@
+{
+  "certifications": [
+    {
+      "id": "google-llm",
+      "name": "Introduction to Large Language Models",
+      "issuer": "Google Cloud",
+      "date": "Dec 2025",
+      "credentialUrl": "",
+      "category": "AI/ML"
+    },
+    {
+      "id": "google-genai",
+      "name": "Introduction to Generative AI",
+      "issuer": "Google Cloud",
+      "date": "Dec 2025",
+      "credentialUrl": "",
+      "category": "AI/ML"
+    },
+    {
+      "id": "apna-dsa",
+      "name": "DSA with Java (Alpha Batch)",
+      "issuer": "Apna College",
+      "date": "2024",
+      "credentialUrl": "",
+      "category": "Development"
+    },
+    {
+      "id": "udemy-webdev",
+      "name": "Complete Web Development Bootcamp",
+      "issuer": "Udemy / Dr. Angela Yu",
+      "date": "Oct 2023",
+      "credentialUrl": "",
+      "category": "Development"
+    },
+    {
+      "id": "cisco-networking",
+      "name": "Networking Basics",
+      "issuer": "Cisco (Credly Verified)",
+      "date": "2023",
+      "credentialUrl": "",
+      "category": "Networking"
+    },
+    {
+      "id": "cisco-iot",
+      "name": "Introduction to IoT",
+      "issuer": "Cisco Networking Academy",
+      "date": "2023",
+      "credentialUrl": "",
+      "category": "Networking"
+    },
+    {
+      "id": "google-marketing",
+      "name": "Fundamentals of Digital Marketing",
+      "issuer": "Google",
+      "date": "2023",
+      "credentialUrl": "",
+      "category": "Marketing"
+    },
+    {
+      "id": "python-workshop",
+      "name": "Python Workshop (16hrs)",
+      "issuer": "Presidential Business School",
+      "date": "2022",
+      "credentialUrl": "",
+      "category": "Development"
+    }
+  ]
+}
