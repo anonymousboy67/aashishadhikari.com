@@ -1,35 +1,27 @@
-import BackgroundGrid from "@/components/layout/BackgroundGrid";
-import Footer from "@/components/layout/Footer";
-import Nav from "@/components/nav/Nav";
-import Hero from "@/components/sections/Hero";
-import Stats from "@/components/sections/Stats";
-import FeaturedProject from "@/components/sections/FeaturedProject";
-import About from "@/components/sections/About";
-import Projects from "@/components/sections/Projects";
-import Certifications from "@/components/sections/Certifications";
-import Achievements from "@/components/sections/Achievements";
-import Music from "@/components/sections/Music";
-import Contact from "@/components/sections/Contact";
-import ScanlineProgress from "@/components/ui/ScanlineProgress";
+import Nav from "@/components/Nav";
+import Hero from "@/components/Hero";
+import Thesis from "@/components/Thesis";
+import Journey from "@/components/Journey";
+import IELTSBuddy from "@/components/IELTSBuddy";
+import Research from "@/components/Research";
+import Education from "@/components/Education";
+import Beyond from "@/components/Beyond";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
     <>
-      <BackgroundGrid />
-      <ScanlineProgress />
       <Nav />
-      <main style={{ position: "relative" }}>
+      <main>
         <Hero />
-        <Stats />
-        <FeaturedProject />
-        <About />
-        <Projects />
-        <Certifications />
-        <Achievements />
-        <Music />
+        <Thesis />
+        <Journey />
+        <IELTSBuddy />
+        <Research />
+        <Education />
+        <Beyond />
         <Contact />
       </main>
-      <Footer />
     </>
   );
 }

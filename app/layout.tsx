@@ -1,58 +1,38 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Space_Grotesk, Space_Mono } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+import { Geist, Geist_Mono, Lora } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const lora = Lora({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-lora",
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
 });
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const spaceMono = Space_Mono({
-  subsets: ["latin"],
-  variable: "--font-space-mono",
-  weight: ["400", "700"],
-});
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
 export const metadata: Metadata = {
-  title: "Aashish Adhikari — Software Engineer & AI Builder",
+  metadataBase: new URL("https://aashishadhikari.com"),
+  title: "Aashish Adhikari — AI engineer, founder & researcher",
   description:
-    "Portfolio of Aashish Adhikari — Software Engineer, AI/ML enthusiast, and MS applicant from Kathmandu, Nepal. Building intelligent systems and platforms that serve real people.",
-  keywords: ["Software Engineer", "AI", "ML", "Nepal", "Next.js", "Portfolio"],
+    "Aashish Adhikari builds AI that assesses student writing and speech. Founder of IELTSBuddy (2,500+ students), B.Sc. IT (AI & ML) Summa Cum Laude, applying for graduate study in NLP for Fall 2027.",
   authors: [{ name: "Aashish Adhikari" }],
   openGraph: {
-    title: "Aashish Adhikari — Software Engineer & AI Builder",
-    description: "Building intelligent systems from Kathmandu, Nepal.",
-    type: "website",
-    locale: "en_US",
+    title: "Aashish Adhikari — Building AI that grades fairly",
+    description:
+      "Founder of IELTSBuddy. Researching the reliability of LLM-based assessment. Kathmandu, Nepal.",
+    type: "profile",
+    images: ["/photos/portrait-smile.jpg"],
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${playfair.variable} ${spaceGrotesk.variable} ${spaceMono.variable}`}
-    >
-      <body suppressHydrationWarning>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          {children}
-          <Analytics />
-        </ThemeProvider>
+    <html lang="en" className={`${lora.variable} ${geist.variable} ${geistMono.variable}`}>
+      <body>
+        {children}
+        <Analytics />
       </body>
     </html>
   );

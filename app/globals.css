@@ -1,97 +1,94 @@
 @import "tailwindcss";
 
-:root {
-  --bg: #f7f6f2;
-  --fg: #1c1c1c;
-  --accent: #3d7068;
-  --border: #e5e4de;
-  --muted: #B4B4B4;
-}
+@theme {
+  --font-serif: var(--font-lora), Georgia, serif;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
-.dark {
-  --bg: #1c1c1c;
-  --fg: #f7f6f2;
-  --accent: #3d7068;
-  --border: #2e2e2e;
-  --muted: #6b6b6b;
-}
-
-* {
-  box-sizing: border-box;
+  --color-paper: #f4f4f2;
+  --color-card: #e9e9eb;
+  --color-ink: #141414;
+  --color-ink-2: #3d3d3d;
+  --color-mute: #8a8a8a;
+  --color-line: #d9d9d9;
+  --color-accent: #b4462f; /* Nepal crimson, used sparingly */
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--color-paper);
 }
 
 body {
-  background-color: var(--bg);
-  color: var(--fg);
-  font-family: 'Space Grotesk', sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 0;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
+/* faint paper grain like the reference */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Selection */
 ::selection {
-  background-color: var(--accent);
-  color: #f7f6f2;
+  background: var(--color-ink);
+  color: var(--color-paper);
 }
 
-/* Form inputs reset */
-input, textarea {
-  outline: none;
-  font-family: inherit;
+.btn-dark {
+  background: linear-gradient(180deg, #2a2a2a 0%, #0e0e0e 100%);
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.18) inset, 0 6px 16px -6px rgba(0, 0, 0, 0.55);
 }
 
-/* Pulse animation */
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+.btn-light {
+  background: #f8f8f8;
+  border: 1px solid var(--color-line);
+  box-shadow: 0 1px 0 #fff inset;
 }
 
-.pulse-dot {
-  animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+.glass {
+  background: linear-gradient(160deg, rgba(60, 60, 60, 0.55), rgba(20, 20, 20, 0.7));
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
 }
 
-/* Bounce animation */
-@keyframes bounce-arrow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(8px); }
+.marquee {
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
 }
 
-.bounce-arrow {
-  animation: bounce-arrow 1.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-/* Typing cursor */
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+.animate-marquee {
+  animation: marquee 38s linear infinite;
 }
 
-.typing-cursor {
-  animation: blink 0.8s step-end infinite;
+.photo-bw {
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 0.8s ease;
+}
+.group:hover .photo-bw {
+  filter: grayscale(0) contrast(1);
 }
 
-/* Card tilt perspective */
-.tilt-card {
-  transform-style: preserve-3d;
-  will-change: transform;
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
